@@ -153,4 +153,19 @@ class Matrix:
 
     # Exercice 6
 
-    pass
+    def det_matrix(self):
+        if self.n != self.m:
+            raise ValueError("Determinant is only defined for square matrices.")
+        
+        def recursive_determinant(matrix):
+            if matrix.shape == (2, 2):
+                return matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0]
+            
+            det = 0
+            for col in range(matrix.shape[1]):
+                sub_matrix = np.delete(np.delete(matrix, 0, axis=0), col, axis=1)
+                cofactor = ((-1) ** col) * matrix[0, col] * recursive_determinant(sub_matrix)
+                det += cofactor
+            return det
+        
+        return recursive_determinant(self.M)
