@@ -142,7 +142,14 @@ class Matrix:
     
     # Exercice 5
 
-    pass
+    def dot_matrix(self, matrix):
+        dot = np.empty((self.n, matrix.m), dtype=int)
+        for i in range(self.n):
+            for j in range(matrix.m):
+                dot[i, j] = 0
+                for k in range(self.m): 
+                    dot[i, j] += self.M[i, k] * matrix.M[k, j]
+        return dot
 
     # Exercice 6
 
