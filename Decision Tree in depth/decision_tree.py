@@ -58,5 +58,4 @@ class DecisionTree:
             chi_outputs[i] = chi_square_value
         return chi_index, chi_outputs
 
-
     # prediction function for later :3
